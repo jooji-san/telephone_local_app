@@ -28,14 +28,21 @@ def connect_wifi():
     
 def get_config_json():
     with open('../config.json', 'r') as f:
-    json_lines = f.read()
-    config = json.loads(json_lines)
-    print(config)
-    return config
+        json_lines = f.read()
+        config = json.loads(json_lines)
+        print(config)
+        return config
 
 def is_connected():
-   try:
+    try:
         response = urlopen('https://www.google.com/', timeout=10)
         return True
     except: 
         return False
+
+def turn_on_AP():
+    run('./ap_on.sh')
+
+def turn_off_AP():
+    run('./ap_off.sh')
+
